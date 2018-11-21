@@ -1,0 +1,34 @@
+from abc import ABCMeta
+from abc import abstractmethod
+# captcha game base class
+class Captcha_game(object):
+	game_content = None
+	game_answer = None
+	game_mode = None
+	__metaclass__ = ABCMeta
+
+	def __init__(self):
+		# pdb.set_trace()
+		self.game_mode = "easy"
+	def __call__(self,mode="human"):
+		self._start_game()
+		self._classify(mode)
+		self._record()
+	def captcha_api(self):
+		print("wow")
+		return None
+
+	@abstractmethod
+	def _start_game(self):
+
+		raise NotImplementedError
+
+	@abstractmethod
+	def _classify(self,mode):
+
+		raise NotImplementedError
+
+	@abstractmethod
+	def _record():
+		
+		raise NotImplementedError

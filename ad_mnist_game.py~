@@ -1,0 +1,77 @@
+import pdb
+import matplotlib.pyplot as plt
+import numpy as np
+from Captcha_game import Captcha_game as cpg
+from baidu_ocr_test import baidu_ocr
+
+class ad_mnist_game(cpg):
+	game_name = "Hi Cyberstorm!"
+
+	def __init__(self,captcha_images_pathlist,ground_truth):
+		super(ad_mnist_game, self).__init__()
+		self.captcha_image_pathlist = captcha_images_pathlist
+		self.ground_truth = ground_truth
+		self.captcha_image = None
+		self.final_answer = None
+
+	def _start_game(self):
+		print("game started!")
+		captcha_image_list = []
+		for image_path in self.captcha_image_pathlist:
+			image = plt.imread(image_path)
+			captcha_image_list.append(image)
+		# pdb.set_trace()
+		self.captcha_image = self.synthesis_images(captcha_image_list)
+		self.imshow_captcha(self.captcha_image)
+
+	def _classify(self,mode):
+		if mode=="human":
+			user_input = input("type answer:")
+			print("classifing!")
+			user_input = [int(i) for i in user_input]
+			if user_input == self.ground_truth:
+				print("HUMAN!")
+			else:
+				print("BOT!")
+
+			print(self.ground_truth,user_input)
+			self.final_answer = user_input
+			return None
+		elif mode=="bot":
+			print("classifing!")
+			input_type = "image"
+			if input_type == "address":
+				bot_input = baidu_ocr(self.captcha_image_pathlist,input_type)
+			else:
+				bot_input = baidu_ocr(self.captcha_image,input_type)
+			print(bot_input)
+			if bot_input != []:
+				bot_input = [int(i) for i in bot_input[0]]
+
+			if bot_input == self.ground_truth:
+				print("HUMAN!")
+			else:
+				print("BOT!")
+
+			print(self.ground_truth,bot_input)
+			self.final_answer = bot_input
+			return None
+		else:
+			return None
+
+	def synthesis_images(self,captcha_images):
+		captcha_image = captcha_images[0]
+		for image in captcha_images:
+			captcha_image = np.c_[captcha_image,image]
+		pdb.set_trace()
+		captcha_image=captcha_image[:,28:]
+		return [captcha_image]
+
+	def imshow_captcha(self,captcha_images):
+		plt.figure()
+		length = len(captcha_images)
+
+		for i in range(length):
+			plt.subplot(1,length,i+1)
+			plt.imshow(captcha_images[i])
+		plt.show()
