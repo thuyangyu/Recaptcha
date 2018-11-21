@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>login</title>
+	<link rel="stylesheet" href="{{ url_for ('static', filename='css/index.css') }}">
+</head>
+<body class="index-window">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>Welcome to Adversarial Captcha Test!</h1>
+	<form action="/name_category" method="post">
+		<h1>Testee Name:</h1> <input class="gametype" type="text" name="usrname"><br>
+		<h1>Testing Category:</h1>
+		<input type="radio" name="category" value="nonad" checked> <label class="gametype"> Non ad test </label><br>
+		<input type="radio" name="category" value="ad"> <label class="gametype"> Ad test </label> <br>
+		<br>
+		<br>
+		<input class="confirm-btn" type="submit" value="Submit">
+	</form>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

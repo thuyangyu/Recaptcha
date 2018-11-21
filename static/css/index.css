@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+}
+
+.window {
+    width:800px; margin:0 auto;
+}
+
+.index-window{
+    width:800px; margin:0 auto;
+    top:500px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    /*height: 300px;  Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.border {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+img {
+    width: 100%;
+    margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+.confirm-btn {
+    background-color:DodgerBlue;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.restart-btn {
+    background-color:LimeGreen ;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.btnholder-center{
+    text-align: center;
+}
+
+.buttonbox{
+    float: right;
+}
+
+input[type=radio] {
+    border: 1px;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.gametype{
+    font-size: 30px;
+}
+
+#question{
+    color: red;
+}
