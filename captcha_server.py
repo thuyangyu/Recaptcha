@@ -76,7 +76,7 @@ def record():
     jsonData = request.get_json()
     clicked = jsonData['clicked']
     time = jsonData['time']
-    # print(type(time)) # int.
+    print(type(jsonData)) # int.
     # print('clicked', clicked)
     # print('time', time)
     time_list.append(time)
